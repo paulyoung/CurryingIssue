@@ -1,0 +1,3 @@
+[submodule "External/Argo"]
+	path = External/Argo
+	url = git@github.com:thoughtbot/Argo.git
