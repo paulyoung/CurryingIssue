@@ -5,11 +5,14 @@ A project to demonstrate how breaking up an expression into distinct sub-express
 ```diff
 extension Foo: Decodable {
     public static func decode(json: JSON) -> Decoded<Foo> {
+        let createdAt = Decoded.Success(NSDate())
+        let updatedAt = Decoded.Success(NSDate())
+
 -        return curry(self.init)
 +        let f = curry(self.init)
-            <^> (json <| "created_at" >>- toNSDate)
+            <^> createdAt
 +        return f
-            <*> (json <| "updated_at" >>- toNSDate)
+            <*> updatedAt
     }
 }
 ```
